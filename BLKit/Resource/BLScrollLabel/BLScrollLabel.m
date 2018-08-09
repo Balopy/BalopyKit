@@ -7,8 +7,7 @@
 //
 
 #import "BLScrollLabel.h"
-
-#define screenWidth [UIScreen mainScreen].bounds.size.width
+#import "UIButton+Balopy.h"
 
 @interface BLScrollLabel ()
 
@@ -29,17 +28,17 @@
         _count = 0;
         _index = 1;
         
-        CGRect frameM = CGRectMake(0, 0, CGRectGetWidth(frame), 21);
+        CGRect frameM = CGRectMake(0, (CGRectGetHeight(frame)-21)*0.5, CGRectGetWidth(frame), 21);
         UIButton *firstLabel = [[UIButton alloc]initWithFrame:frameM];
         firstLabel.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-        firstLabel.titleLabel.font = [UIFont systemFontOfSize:13.f];
-        firstLabel.titleLabel.textColor = [UIColor blackColor];
+        firstLabel.blFont = [UIFont systemFontOfSize:13.f];
+        firstLabel.blColor = [UIColor blackColor];
         firstLabel.tag = _index;
-        [firstLabel setImage:[UIImage imageNamed:self.imageName] forState:UIControlStateNormal];
-        [self addSubview:firstLabel];
-        
+        firstLabel.blImage = self.imageName;
         firstLabel.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    
+       
+        [self addSubview:firstLabel];
+
         _changeTimer = [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(repeadFuntion) userInfo:nil repeats:YES];
     }
     return self;
@@ -70,17 +69,20 @@
         _count = 0;
     }
     
-    CGRect frame = CGRectMake(0, 21, CGRectGetWidth(self.bounds), 21);
+    CGRect frame = CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), 21);
     UIButton *currentButton = [[UIButton alloc]initWithFrame:frame];
     currentButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-
-    [currentButton setImage:[UIImage imageNamed:self.imageName] forState:UIControlStateNormal];
+    currentButton.blImage = self.imageName;
     currentButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [currentButton setTitle:_tempArray[_count] forState:UIControlStateNormal];
+   currentButton.blTitle = _tempArray[_count] ;
     currentButton.alpha = 0.3;
-    currentButton.titleLabel.textColor = _color;
-    currentButton.titleLabel.font = _font;
-    [currentButton addTarget:self action:@selector(labelButtonClock:) forControlEvents:UIControlEventTouchUpInside];
+    currentButton.blColor = _color;
+    currentButton.blFont = _font;
+    [currentButton buttonTapEvent:^(UIButton *sender) {
+        if (self.scrollLabelEvent) {
+            self.scrollLabelEvent(self.tempArray[self.count]);
+        }
+    }];
     if (_index == 1) {
         currentButton.tag = 2;
     }else{
@@ -88,19 +90,16 @@
     }
     [self addSubview:currentButton];
 
-    
-    
     UIButton *labelOnChangeView = [self viewWithTag:_index];
+    
+    labelOnChangeView.blColor = _color;
+    labelOnChangeView.blFont = _font;
    
-    
-    
-    labelOnChangeView.titleLabel.textColor = _color;
-    labelOnChangeView.titleLabel.font = _font;
     [UIView animateWithDuration:1 animations:^{
         
-        labelOnChangeView.frame = CGRectMake(0, -21, CGRectGetWidth(self.bounds), 21);
+        labelOnChangeView.frame = CGRectMake(0, -CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), 21);
         labelOnChangeView.alpha = 0;
-        currentButton.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), 21);
+        currentButton.frame = CGRectMake(0, (CGRectGetHeight(frame)-21)*0.5, CGRectGetWidth(self.bounds), 21);
         
     } completion:^(BOOL finished){
         
@@ -115,12 +114,6 @@
     }
 }
 
-- (void) labelButtonClock:(UIButton *)sender {
-    
-    if (self.scrollLabelEvent) {
-        self.scrollLabelEvent(_tempArray[_count]);
-    }
-}
 
 - (void)dealloc {
     [_changeTimer invalidate];
