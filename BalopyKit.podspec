@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "BalopyKit"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "usually Control"
 
  s.description  = <<-DESC
