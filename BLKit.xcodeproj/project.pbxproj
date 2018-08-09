@@ -19,6 +19,7 @@
 		9F4D3769211C175800E68989 /* BLGeneralControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D3765211C175800E68989 /* BLGeneralControl.m */; };
 		9F4D376A211C175800E68989 /* UIButton+Balopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D3767211C175800E68989 /* UIButton+Balopy.m */; };
 		9F4D376D211C26F900E68989 /* BLDropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D376C211C26F900E68989 /* BLDropDownListView.m */; };
+		9F4D3773211C47F200E68989 /* BLScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D3772211C47F100E68989 /* BLScrollLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		9F4D3768211C175800E68989 /* UIButton+Balopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Balopy.h"; sourceTree = "<group>"; };
 		9F4D376B211C26F900E68989 /* BLDropDownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLDropDownListView.h; sourceTree = "<group>"; };
 		9F4D376C211C26F900E68989 /* BLDropDownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLDropDownListView.m; sourceTree = "<group>"; };
+		9F4D3771211C47F100E68989 /* BLScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLScrollLabel.h; sourceTree = "<group>"; };
+		9F4D3772211C47F100E68989 /* BLScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLScrollLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,11 +145,21 @@
 		9F4D376F211C429300E68989 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9F4D3770211C47CF00E68989 /* BLScrollLabel */,
 				9F4D3766211C175800E68989 /* BLButton */,
 				9F4D3763211C175800E68989 /* BLControl */,
 				9F120C4A21106BBE0069C22D /* DropDowListView */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		9F4D3770211C47CF00E68989 /* BLScrollLabel */ = {
+			isa = PBXGroup;
+			children = (
+				9F4D3771211C47F100E68989 /* BLScrollLabel.h */,
+				9F4D3772211C47F100E68989 /* BLScrollLabel.m */,
+			);
+			path = BLScrollLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +237,7 @@
 				9F4D3769211C175800E68989 /* BLGeneralControl.m in Sources */,
 				9F4D376D211C26F900E68989 /* BLDropDownListView.m in Sources */,
 				9F120C5321106BD90069C22D /* BLDropDownListItem.m in Sources */,
+				9F4D3773211C47F200E68989 /* BLScrollLabel.m in Sources */,
 				9F120C1C21106B880069C22D /* ViewController.m in Sources */,
 				9F4D376A211C175800E68989 /* UIButton+Balopy.m in Sources */,
 				9F120C2721106B890069C22D /* main.m in Sources */,
