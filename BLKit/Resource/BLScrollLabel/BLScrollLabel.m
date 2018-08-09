@@ -40,10 +40,7 @@
         
         firstLabel.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
-        _changeTimer = [NSTimer scheduledTimerWithTimeInterval:2.0f repeats:YES block:^(NSTimer * _Nonnull timer) {
-            
-            [self repeadFuntion];
-        }];
+        _changeTimer = [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(repeadFuntion) userInfo:nil repeats:YES];
     }
     return self;
 }
