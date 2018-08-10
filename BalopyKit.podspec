@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "BalopyKit"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "usually Control"
 
  s.description  = <<-DESC
@@ -39,7 +39,7 @@ Hope userful to you!
   s.exclude_files = "Classes/Exclude"
 
  
-   s.frameworks = "UIKit", "Foundation"
+   s.frameworks = "UIKit", "Foundation", "ImageIO", "objc", "CoreText"
 
 
 end
