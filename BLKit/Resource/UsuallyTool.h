@@ -40,15 +40,16 @@
 #import "UIDevice+NNDevice.h"
 
 #import "UITabBarController+NNTabBarController.h"
+#import "UIButton+Balopy.h"
+#import "BLScrollLabel.h"
+#import "UICollectionViewLeftAlignedLayout.h"
 
+//字符串是否为空
+#define BLStringIsEmpty(str) (([str isKindOfClass:[NSString class]] && str && [str length]) ? NO : YES)
+//数组是否为空
+#define BLArrayIsEmpty(array) ((array && array.count) ? NO : YES)
+//字典是否为空
+#define BLDictIsEmpty(dic) ((dic && dic.allKeys) ? NO : YES)
 
-/** 字符串是否为空 */
-#define kIsStringEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
-
-/** 数组是否为空 */
-#define kIsArrayEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
-
-/** 字典是否为空 */
-#define kIsDictEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
 
 #endif /* UsuallyTool_h */
