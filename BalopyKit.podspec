@@ -39,7 +39,6 @@ Hope userful to you!
   s.exclude_files = "Classes/Exclude"
 
  
-   s.frameworks = "UIKit", "Foundation", "ImageIO", "objc", "CoreText"
-
+   s.frameworks = "UIKit", "Foundation"
 
 end
