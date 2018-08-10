@@ -10,12 +10,7 @@
 
 @interface BLScrollLabel : UIView
 
-@property (nonatomic, strong) NSArray *tempArray;
-
-@property (nonatomic, strong) UIFont *font;
-@property (nonatomic, strong) UIColor *color;
-@property (nonatomic, copy) NSString *imageName;
-
+- (instancetype)initWithFrame:(CGRect)frame textFont:(UIFont *)textFont textColor:(UIColor *)textColor imageName:(NSString *)imageName textArray:(NSArray *)textArray;
 
 /*! 回调 */
 @property (nonatomic, copy) void (^scrollLabelEvent) (id paramer);
