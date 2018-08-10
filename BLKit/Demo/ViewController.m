@@ -10,7 +10,7 @@
 #import "BLDropDownListItem.h"
 #import "BLDropDownListView.h"
 #import "UIButton+Balopy.h"
-
+#import "BLScrollLabel.h"
 
 @interface ViewController ()<BLDropDownListViewDelegate>
 
@@ -27,7 +27,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
+    BLScrollLabel *label = [[BLScrollLabel alloc] init];
+    label.color = [UIColor blackColor];
+    label.font = [UIFont systemFontOfSize:13.f];
+    label.frame = CGRectMake(20, 40, CGRectGetWidth(self.view.bounds)-40, 21);
+    label.imageName = @"首页_建造师";
+    label.backgroundColor = [UIColor redColor];
+    label.tempArray = @[@"34123414123423", @"dfasdfasdfsadfasd", @"#############", @"))))))))))))"].mutableCopy;
+    [self.view addSubview:label];
+    
+    label.scrollLabelEvent = ^(id paramer) {
+        NSLog(@"%@", paramer);
+    };
     [self setUpTopView];
 }
 
@@ -48,7 +59,7 @@
     for (int i = 0; i < count; i++) {
         
         UIButton *btn = [[UIButton alloc] init];
-        btn.frame = CGRectMake(i * (width / count), 80, width/count, height);
+        btn.frame = CGRectMake(i * (width / count), 250, width/count, height);
         btn.tag = i;
         btn.blFont = [UIFont systemFontOfSize:15];
         btn.blColor = [UIColor darkGrayColor];
@@ -56,10 +67,10 @@
         btn.blTitle = names[i];
         btn.blImage = @"矩形-29-拷贝";
         btn.blSelectedImage = @"blue_矩形-29";
-        [btn buttonTapEvent:^(UIButton *sender) {
-            
+        btn.touchUpInsideblock = ^(UIButton *sender) {
+           
             [self classThreeBtnClick:sender];
-        }];
+        };
         
         [self.view addSubview:btn];
     }
@@ -170,7 +181,7 @@
     
     if (!_dropListView) {
         
-        CGRect frame = CGRectMake(0, 80+40, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-(80+40));
+        CGRect frame = CGRectMake(0, 250+40, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-(250+40));
         BLDropDownListView *dropListView = [[BLDropDownListView alloc] initWithFrame:frame];
         dropListView.dropDelegate = self;
         dropListView.hidden = YES;

@@ -9,10 +9,14 @@
 #import "BLScrollLabel.h"
 #import "UIButton+Balopy.h"
 
+typedef NS_ENUM(NSUInteger, BLScrollLabelIndex) {
+    firstLabelIndex = 1342321,
+    secondLabelIndex
+};
 @interface BLScrollLabel ()
 
 @property(nonatomic,strong)NSTimer *changeTimer;
-@property(nonatomic,assign)NSInteger  index;
+@property(nonatomic,assign)BLScrollLabelIndex  index;
 @property(nonatomic,assign)NSInteger  count;
 
 @end
@@ -26,7 +30,7 @@
     if (self) {
         
         _count = 0;
-        _index = 1;
+        _index = firstLabelIndex;
         
         CGRect frameM = CGRectMake(0, (CGRectGetHeight(frame)-21)*0.5, CGRectGetWidth(frame), 21);
         UIButton *firstLabel = [[UIButton alloc]initWithFrame:frameM];
@@ -78,15 +82,15 @@
     currentButton.alpha = 0.3;
     currentButton.blColor = _color;
     currentButton.blFont = _font;
-    [currentButton buttonTapEvent:^(UIButton *sender) {
+    currentButton.touchUpInsideblock = ^(UIButton *sender) {
         if (self.scrollLabelEvent) {
             self.scrollLabelEvent(self.tempArray[self.count]);
         }
-    }];
-    if (_index == 1) {
-        currentButton.tag = 2;
+    };
+    if (_index == firstLabelIndex) {
+        currentButton.tag = secondLabelIndex;
     }else{
-        currentButton.tag = 1;
+        currentButton.tag = firstLabelIndex;
     }
     [self addSubview:currentButton];
 
@@ -107,10 +111,10 @@
         currentButton.alpha = 1;
     }];
     
-    if (_index == 1) {
-        _index = 2;
+    if (_index == firstLabelIndex) {
+        _index = secondLabelIndex;
     }else{
-        _index = 1;
+        _index = firstLabelIndex;
     }
 }
 

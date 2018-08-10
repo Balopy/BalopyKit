@@ -13,7 +13,7 @@ typedef void(^BLTouchUpInsideEvent)(UIButton *sender);
 
 @interface UIButton (Balopy)
 /*! 回调 */
-- (void) buttonTapEvent:(BLTouchUpInsideEvent)block;
+@property (nonatomic, copy) BLTouchUpInsideEvent touchUpInsideblock;
 
 /*! 点击进间隙 */
 @property (nonatomic, assign) NSTimeInterval bl_acceptEventInterval;

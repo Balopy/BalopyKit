@@ -49,19 +49,31 @@
     }
 }
 
+#pragma mark --- 给增加一个回调属性 ---
+static const void *touchUpInside_blockKey = @"touchUpInside_blockKey";
 
-
-BLTouchUpInsideEvent _eventBlock;
-
-- (void)buttonTapEvent:(BLTouchUpInsideEvent)block {
+-(void)setTouchUpInsideblock:(BLTouchUpInsideEvent)touchUpInsideblock {
+  
+    objc_setAssociatedObject(self, touchUpInside_blockKey, touchUpInsideblock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+    //选移除之前的点击方法，防止点击方法一直持有
+    [self removeTarget:self action:@selector(touchupInside:) forControlEvents:UIControlEventTouchUpInside];
    
-    _eventBlock = block;
-    [self addTarget:self action:@selector(touchupInside:) forControlEvents:UIControlEventTouchUpInside];
+    if (touchUpInsideblock) {
+        
+        [self addTarget:self action:@selector(touchupInside:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
+- (BLTouchUpInsideEvent) touchUpInsideblock {
+    return  objc_getAssociatedObject(self, touchUpInside_blockKey);
+}
+
+
 - (void) touchupInside:(UIButton *)sender {
-    if (_eventBlock) {
-        _eventBlock (sender);
+    
+    if (self.touchUpInsideblock) {
+        self.touchUpInsideblock (sender);
     }
 }
 

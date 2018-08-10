@@ -1,0 +1,19 @@
+//
+//  UIViewController+NNViewController.h
+//  UsuallyTool
+//
+//  Created by 刘朋坤 on 2018/8/2.
+//  Copyright © 2018年 刘朋坤. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIViewController (NNViewController)
+
+/** 当前视图控制器 */
++ (UIViewController *)currentViewController;
+
+/** 当前导航控制器 */
++ (UINavigationController *)currentNavigatonController;
+
+@end
