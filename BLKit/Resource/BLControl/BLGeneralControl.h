@@ -23,6 +23,8 @@
 /*! 创建一个view */
 + (UIView *) createUIViewWithBackColor:(UIColor *)color addViewTo:(id)view;
 
+/*! 创建一个Button，字号，字体颜色 */
++ (UIButton *) createUIButtonFont:(CGFloat)font titleColor:(UIColor *)color addViewTo:(id)view;
 /*! 创建带背景图片的button */
 + (UIButton *) createUIButtonWithBackgroundImageName:(NSString *)normalIcon selectedIcon:(NSString *)selectedIcon addViewTo:(id)view;
 

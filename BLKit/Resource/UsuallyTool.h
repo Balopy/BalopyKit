@@ -43,7 +43,7 @@
 #import "UIButton+Balopy.h"
 #import "BLScrollLabel.h"
 #import "UICollectionViewLeftAlignedLayout.h"
-
+#import "BLGeneralControl.h"
 //字符串是否为空
 #define BLStringIsEmpty(str) (([str isKindOfClass:[NSString class]] && str && [str length]) ? NO : YES)
 //数组是否为空
