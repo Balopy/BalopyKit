@@ -18,7 +18,6 @@
 
 #import "UIFont+NNSize.h"
 
-#import "UIImage+MAdd.h"
 #import "UIImage+CZ.h"
 
 #import "UIImageView+MAdd.h"
